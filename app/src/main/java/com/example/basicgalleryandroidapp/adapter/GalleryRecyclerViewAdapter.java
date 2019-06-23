@@ -1,23 +1,30 @@
 package com.example.basicgalleryandroidapp.adapter;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.basicgalleryandroidapp.database.Image;
+import com.example.basicgalleryandroidapp.viewmodel.GalleryViewModel;
+
 import java.util.ArrayList;
 
 public class GalleryRecyclerViewAdapter extends RecyclerView.Adapter<GalleryRecyclerViewAdapter.ImageViewHolder>{
 
-    private ArrayList<String> arrayListImageURIs;
+    private ArrayList<Image> arrayListImageURIs;
     private Context context;
 
-    public GalleryRecyclerViewAdapter(@NonNull Context context, ArrayList<String> arrayListImageURIs) {
-        this.arrayListImageURIs = arrayListImageURIs;
+    private GalleryViewModel galleryViewModel;
+
+    public GalleryRecyclerViewAdapter(@NonNull Context context, ArrayList<Image> arrayListImageURIs) {
         this.context = context;
+        this.arrayListImageURIs = arrayListImageURIs;
     }
 
     @NonNull

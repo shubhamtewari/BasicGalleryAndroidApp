@@ -1,5 +1,6 @@
 package com.example.basicgalleryandroidapp.database;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -12,5 +13,5 @@ public interface ImageDAO {
     public void insertImage(Image image);
 
     @Query("SELECT * from image_table ORDER BY image_uid ASC")
-    public ArrayList<Image> getImages();
+    public LiveData<ArrayList<Image>> getImages();
 }
