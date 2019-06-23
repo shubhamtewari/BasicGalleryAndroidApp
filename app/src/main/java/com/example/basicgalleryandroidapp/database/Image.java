@@ -11,21 +11,21 @@ public class Image {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "image_uid")
-    private int imageUid;
+    private String imageUid;
 
     @ColumnInfo(name = "image_uri")
     private String imageURI;
 
-    public Image(int uid, String uri) {
-        this.imageUid = uid;
-        this.imageURI = uri;
+    public Image(String imageUid, String imageURI) {
+        this.imageUid = imageUid;
+        this.imageURI = imageURI;
     }
 
-    public int getImageUid() {
+    public String getImageUid() {
         return imageUid;
     }
 
-    public void setImageUid(int imageUid) {
+    public void setImageUid(String imageUid) {
         this.imageUid = imageUid;
     }
 
