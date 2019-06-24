@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.example.basicgalleryandroidapp.R;
 import com.example.basicgalleryandroidapp.database.Image;
 import com.example.basicgalleryandroidapp.viewmodel.GalleryViewModel;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.net.URI;
@@ -46,7 +45,7 @@ public class GalleryRecyclerViewAdapter extends RecyclerView.Adapter<GalleryRecy
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
         imageViewHolder.textView.setText(mutableListImageURIs.getValue().get(i).getImageUid()+"");
-        Picasso.get().load(mutableListImageURIs.getValue().get(i).getImageURI()).into(imageViewHolder.imageView);
+        //Picasso.get().load(mutableListImageURIs.getValue().get(i).getImageURI()).into(imageViewHolder.imageView);
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
