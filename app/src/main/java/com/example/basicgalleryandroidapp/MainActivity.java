@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
         recyclerViewImages = findViewById(R.id.idREcyclerView);
 
         galleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel.class);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             //permission granted
             galleryViewModel.initDatabase();
+            Toast.makeText(getApplicationContext(), "Loading "+recyclerViewImages.getAdapter().getItemCount()+" Images.", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -70,28 +71,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Image> images) {
                 recyclerViewImages.getAdapter().notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(), "No of images"+recyclerViewImages.getAdapter().getItemCount(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Loading "+recyclerViewImages.getAdapter().getItemCount()+" Images.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        setSupportActionBar(toolbar);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -103,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     galleryViewModel.initDatabase();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Cannot access storage:(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Cannot access storage. Please provide permission.", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
