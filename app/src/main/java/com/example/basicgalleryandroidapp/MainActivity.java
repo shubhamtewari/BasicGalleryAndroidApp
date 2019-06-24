@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),3, GridLayoutManager.VERTICAL, false);
         recyclerViewImages.setLayoutManager(gridLayoutManager);
 
-
         //observe for live data changes
         galleryViewModel.getMutableLiveDataImagesList().observe(this, new Observer<List<Image>>() {
             @Override
